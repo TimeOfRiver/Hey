@@ -41,4 +41,6 @@ public class ShopInfoController {
         shopInfoService.add(shopInfo);
     }
 
+
+
 }

@@ -6,6 +6,8 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+import java.awt.*;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -33,8 +35,8 @@ public class ShopInfoDaoImpl implements ShopInfoDao {
 
     @Override
     public int update(ShopInfo shopInfo) {
-        return jdbcTemplate.update("UPDATE shop_info set shop_name = ?, shop_description = ?, shop_type = ?",
-                shopInfo.getShopName(), shopInfo.getShopDescription(), shopInfo.getShopType());
+        return jdbcTemplate.update("UPDATE shop_info set shop_name = ?, shop_description = ?, shop_type = ?,update_time = ? WHERE id = ?",
+                shopInfo.getShopName(), shopInfo.getShopDescription(), shopInfo.getShopType(),new Date(),shopInfo.getId());
     }
 
     @Override

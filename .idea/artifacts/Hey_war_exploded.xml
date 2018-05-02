@@ -47,6 +47,7 @@
           <element id="library" level="project" name="Maven: org.apache.tomcat:tomcat-juli:8.0.32" />
           <element id="library" level="project" name="Maven: org.springframework:spring-jdbc:4.2.5.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-tx:4.2.5.RELEASE" />
+          <element id="library" level="project" name="Maven: com.alibaba:fastjson:1.2.46" />
         </element>
       </element>
       <element id="directory" name="META-INF">

@@ -1,5 +1,6 @@
 package com.controller;
 
+import com.alibaba.fastjson.JSONObject;
 import com.domain.ShopInfo;
 import com.service.ShopInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,6 +42,33 @@ public class ShopInfoController {
         shopInfoService.add(shopInfo);
     }
 
+    @RequestMapping(value = "/{id:\\d+}", method = RequestMethod.PUT)
+    public void update(@PathVariable Long id, @RequestBody JSONObject jsonObject) {
+        ShopInfo shopInfo = shopInfoService.selectOne(id.intValue());
+        if (shopInfo == null) {
+            return;
+        }
+        shopInfo.setShopName(jsonObject.getString("shopName"));
+        shopInfo.setShopDescription(jsonObject.getString("shopDesc"));
+        shopInfo.setId(id.intValue());
+        try {
+            shopInfoService.update(shopInfo);
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new RuntimeException("update failed!");
+        }
+    }
 
+    @RequestMapping(value = "/{id:\\d+}", method = RequestMethod.DELETE)
+    public void delete(@PathVariable Long id) {
+        if (id != null) {
+            try {
+                shopInfoService.delete(id.intValue());
+            } catch(Exception e) {
+                e.printStackTrace();
+                throw new RuntimeException("delete failed!");
+            }
+        }
+    }
 
 }

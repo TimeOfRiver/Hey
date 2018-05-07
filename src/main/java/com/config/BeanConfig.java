@@ -23,7 +23,7 @@ public class BeanConfig {
 
     @Bean(name = "oneDataSource")
     @Qualifier("oneDataSource")
-    //@Primary
+    @Primary
     @ConfigurationProperties(prefix = "spring.datasource.one")
     public DataSource oneDatasource() {
         return DataSourceBuilder.create().build();

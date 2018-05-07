@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mapper.ShopInfoMapper">
+
+    <!-- type为实体类Student，包名已经配置，可以直接写类名 -->
+    <resultMap id="shopInfoMap" type="ShopInfo">
+        <id property="id" column="id"/>
+        <result property="shopName" column="shop_name"/>
+        <result property="shopDescription" column="shop_description"/>
+        <result property="shopType" column="shop_type"/>
+        <result property="createTime" column="create_time"/>
+        <result property="updateTime" column="update_time"/>
+    </resultMap>
+
+    <select id="selectOne" resultMap="shopInfoMap" resultType="ShopInfo">
+        select id, shop_name, shop_description,shop_type,create_time,update_time from shop_info where id = #{id}
+    </select>
+
+    <select id="selectAll" resultMap="shopInfoMap">
+        select * from shop_info
+    </select>
+
+    <update id="update" parameterType="ShopInfo">
+        UPDATE shop_info
+        set shop_name = #{shopName}, shop_description = #{shopDescription},
+        shop_type = #{shopType},update_time = #{updateTime} WHERE id = #{id}
+    </update>
+
+    <update id="add" parameterType="ShopInfo">
+        insert into shop_info(shop_name,shop_description,shop_type) value(#{shopName},#{shopDescription},#{shopType})
+    </update>
+
+    <delete id="delete">
+        delete from shop_info where id = #{id}
+    </delete>
+</mapper>

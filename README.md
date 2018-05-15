@@ -23,3 +23,6 @@ CREATE TABLE `user`.`user_info` (
   `create_time` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `update_time` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`));
+  
+  # swagger
+  # http://localhost:8080/swagger-ui.html

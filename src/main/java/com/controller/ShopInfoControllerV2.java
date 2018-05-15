@@ -2,6 +2,7 @@ package com.controller;
 
 import com.domain.ShopInfo;
 import com.service.ShopInfoServiceV2;
+import io.swagger.annotations.ApiOperation;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,6 +25,7 @@ public class ShopInfoControllerV2 {
     private ShopInfoServiceV2 shopInfoServiceV2;
 
     @RequestMapping(value = "/",method = RequestMethod.GET)
+    @ApiOperation(value = "获取所有商品信息",notes = "")
     public List<ShopInfo> findAllShopinfo(){
         return shopInfoServiceV2.findAll();
     }
